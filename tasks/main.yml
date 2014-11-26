@@ -1,0 +1,41 @@
+---
+
+- name: install irssi with optional packages
+  apt:
+    pkg: '{{item}}'
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+  with_items: irssi_packages
+
+- name: create directories for configuration purposes
+  file:
+    path: '{{ item.0.base_path }}/{{ item.1.name }}'
+    state: directory
+    owner: '{{ item.0.owner }}'
+    group: '{{ item.0.group }}'
+    mode: '{{ item.1.mode }}'
+  with_subelements:
+    - irssi_config_directories
+    - directories
+
+- name: install files
+  copy:
+    src: '{{ item.1.name }}'
+    dest: '{{ item.0.base_path }}/{{ item.1.name }}'
+    owner: '{{ item.0.owner }}'
+    group: '{{ item.0.group }}'
+    mode: '{{ item.1.mode }}'
+  with_subelements:
+    - irssi_config_files
+    - files
+
+- name: enable scripts for autorun
+  file:
+    src: '{{ item.0.base_path }}/{{ item.1 }}'
+    dest: '{{ item.0.base_path }}/autorun/{{ item.1 }}'
+    state: link
+    force: yes
+  with_subelements:
+    - irssi_autorun_files
+    - files

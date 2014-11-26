@@ -1,0 +1,8 @@
+---
+
+irssi_packages:
+  - irssi
+  - irssi-scripts
+irssi_config_directories: []
+irssi_config_files: []
+irssi_autorun_files: []
