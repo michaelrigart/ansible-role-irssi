@@ -1,15 +1,15 @@
 Ansible irssi Role
 ==================
+[![Build Status](https://travis-ci.org/michaelrigart/ansible-role-irssi.svg?branch=master)](https://travis-ci.org/michaelrigart/ansible-role-irssi)
 
 An ansible role for installing and configuring irssi
 
 Role Variables
 --------------
 
+```yaml
 irssi_packages: list of packages and plugins that you want to install
-irssi_config_directories: nested dictionary list with all directories needed to put configuration files. Also holds path,
-permissions, etc
-
+irssi_config_directories: nested dictionary list with all directories needed to put configuration files. Also holds path, permissions, etc
   - owner: michael
     group: michael
     base_path: /home/michael
@@ -22,9 +22,7 @@ permissions, etc
         mode: '0755'
       - name: .irssi/scripts/autorun
         mode: '0755'
-
 irssi_config_files: nested dictionary list with all configuration files. Also holds path, permissions, etc
-
   - owner: michael
     group: michael
     base_path: /home/michael/.irssi
@@ -43,20 +41,21 @@ irssi_config_files: nested dictionary list with all configuration files. Also ho
         mode: '0664'
       - name: scripts/fnotify.pl
         mode: '0644'
-
 irssi_autorun_files: dictionary
-
   - base_path: /home/michael/.irssi/scripts
     files:
       - screen_away.pl
       - fnotify.pl
+```
 
 Example Playbook
 -------------------------
 
+```yaml
     - hosts: servers
       roles:
-         - { role: MichaelRigart.irssi }
+         - { role: MichaelRigart.irssi, sudo: Yes }
+```
 
 License
 -------
