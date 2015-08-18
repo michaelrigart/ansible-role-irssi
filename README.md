@@ -1,6 +1,6 @@
 Ansible irssi Role
 ==================
-[![Build Status](https://semaphoreci.com/api/v1/projects/638c95b2-875e-4cb7-b6e2-7fa68b125d9f/459462/badge.svg)](https://semaphoreci.com/michaelrigart/ansible-role-irssi) [![Build Status](https://travis-ci.org/michaelrigart/ansible-role-irssi.svg?branch=master)](https://travis-ci.org/michaelrigart/ansible-role-irssi)
+[![Build Status](https://semaphoreci.com/api/v1/projects/638c95b2-875e-4cb7-b6e2-7fa68b125d9f/459462/badge.svg)](https://semaphoreci.com/michaelrigart/ansible-role-irssi)
 
 An ansible role for installing and configuring irssi
 
