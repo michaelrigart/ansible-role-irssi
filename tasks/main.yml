@@ -6,7 +6,7 @@
     state: present
     update_cache: yes
     cache_valid_time: 3600
-  with_items: irssi_packages
+  with_items: '{{ irssi_packages }}'
 
 - name: create directories for configuration purposes
   file:
