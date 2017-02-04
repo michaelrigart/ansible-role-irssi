@@ -1,0 +1,6 @@
+---
+
+- name: irssi_restart_bitlbee
+  service:
+    name: bitlbee
+    state: restarted

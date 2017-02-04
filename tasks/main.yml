@@ -16,7 +16,7 @@
     group: '{{ item.0.group }}'
     mode: '{{ item.1.mode }}'
   with_subelements:
-    - irssi_config_directories
+    - '{{ irssi_config_directories }}'
     - directories
 
 - name: install files
@@ -27,7 +27,7 @@
     group: '{{ item.0.group }}'
     mode: '{{ item.1.mode }}'
   with_subelements:
-    - irssi_config_files
+    - '{{ irssi_config_files }}'
     - files
 
 - name: enable scripts for autorun
@@ -37,5 +37,14 @@
     state: link
     force: yes
   with_subelements:
-    - irssi_autorun_files
+    - '{{ irssi_autorun_files }}'
     - files
+
+- name: copy bitblee.conf
+  file:
+    src: 'bitlbee.conf'
+    dest: '/etc/bitlbee/bitlbee.conf'
+    owner: 'root'
+    group: 'bitlbee'
+    mode: '0640'
+  notify: irssi_restart_bitlbee
